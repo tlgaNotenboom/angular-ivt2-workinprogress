@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminGuard implements CanActivate {
 
-  private isAdmin: boolean = false;
+  private isAdmin: boolean = true;
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     console.log(`isAdmin is ${this.isAdmin}`);
