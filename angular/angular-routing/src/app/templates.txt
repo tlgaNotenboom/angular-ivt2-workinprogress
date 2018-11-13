@@ -1,0 +1,64 @@
+<!-- This file contains all templates you need -->
+
+
+<!-- HOME COMPONENT -->
+<h1>{{title | uppercase}}</h1>
+
+
+<!-- ADMIN COMPONENT -->
+<h1>{{title}}</h1>
+
+
+<!-- USER LIST COMPONENT -->
+<h2>{{title}}</h2>
+
+<div class="row">
+  <table class="table table-hover">
+    <thead>
+      <th>Idx</th>
+      <th>Name</th>
+      <th>Email</th>
+    </thead>
+    <tbody>
+      <tr 
+        *ngFor="let user of users; let i = index" 
+        app-user-item
+        [selectedUser]="user" 
+        [index]="i"
+        >
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<!-- USER ITEM COMPONENT -->
+<td>{{ index + 1 }}</td>
+<td>
+  <a href="#" [routerLink]="[index]">
+    {{selectedUser.name.title}} {{ selectedUser.name.first | titlecase }} {{selectedUser.name.last | uppercase}}
+  </a>
+</td>
+<td>{{ selectedUser.email }}</td>
+
+
+<!-- USER DETAIL COMPONENT -->
+<h2>{{title}}</h2>
+<p *ngIf="id >= 0">Reading data for user {{id}}</p>
+<p *ngIf="id >= 0">{{selectedUser.name.title}} {{ selectedUser.name.first | titlecase }} {{selectedUser.name.last | uppercase}}</p>
+
+
+<!-- USERS COMPONENT -->
+<h1>{{title}}</h1>
+<p>Hier zou extra info kunnen staan.</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 show-outlet">
+      <app-user-list></app-user-list>
+    </div>
+    <div class="col show-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
