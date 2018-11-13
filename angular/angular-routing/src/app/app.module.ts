@@ -5,23 +5,19 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HeaderComponent } from './components/header/header.component';
-import { UsersComponent } from './components/users/users.component';
-import { UserListComponent } from './components/users/user-list/user-list.component';
-import { UserDetailsComponent } from './components/users/user-details/user-details.component';
-import { UserItemComponent } from './components/users/user-list/user-item/user-item.component';
+import { UsersModule } from './components/users/users.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeaderComponent,
-    UsersComponent,
-    UserListComponent,
-    UserDetailsComponent,
-    UserItemComponent
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
+    // Order is important!
+    // Must be before AppRoutingModule, otherwise userroutes are overwritten by '**'. 
+    UsersModule,  
     AppRoutingModule,
     NgbModule
   ],
