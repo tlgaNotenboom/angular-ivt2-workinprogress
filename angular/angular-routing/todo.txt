@@ -1,6 +1,7 @@
 Wat we vandaag doen:
 
 - Routing voorbeeld van laatste les kort bekijken
+	>> Leg uit wat er gebeurt!
 	>> CSS borders rond routeroutlet
 
 - Users module maken
@@ -8,18 +9,46 @@ Wat we vandaag doen:
 - Push naar Heroku
 
 - Observables behandelen
-- Routing naar Nieuw User/Edit existing user
 
 
->> HUISWERK
+>> HUISWERK volgt aan eind van de les
 
-- Zorg dat je app op de juiste manier navigeert naar de UserEdit component
-	- Voeg de Edit en New routes toe op de User module
-	- Toon de Edit en New status op de juiste manier
 
-- Maak een UserService met CRUD functionaliteit op Users
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Bedenk vragen die op het tentamen gesteld zouden kunnen worden!
+	Invullen via het online formulier.
+
+- Routing naar New User/Edit existing user
+	- Voeg een UserEdit component toe. Deze gebruik je voor zowel Edit als voor New!
+	- Zorg dat je app op de juiste manier navigeert naar de UserEdit component
+		- Onderscheid de status via data die je meegeeft aan de route.
+
+		http://localhost:4200/users/0/edit én http://localhost:4200/users/list/3/edit
+		- Edit user 0. 'Save' slaat wijzigingen op (console.log dit); 'Cancel' niet. 
+
+		http://localhost:4200/users/new én http://localhost:4200/users/list/new
+		- Nieuwe user; ook met Save en Cancel buttons.
+
+		- Voeg de Edit en New routes toe op de User module
+
+- Maak een UserService en simuleer (via console.log) CRUD functionaliteit op Users
 	- Met meer entiteiten/modules komen er ook meer services bij.
-	- Hoe kunnen we die services generiek maken?
+	  Hoe kunnen we die services generiek maken?
 
 - Deploy je service op Heroku, en vul je URL in in het online document.
 
