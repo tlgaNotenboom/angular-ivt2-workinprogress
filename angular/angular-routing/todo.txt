@@ -1,0 +1,27 @@
+Wat we vandaag doen:
+
+- Routing voorbeeld van laatste les kort bekijken
+	>> CSS borders rond routeroutlet
+
+- Users module maken
+- Service toevoegen
+- Push naar Heroku
+
+- Observables behandelen
+- Routing naar Nieuw User/Edit existing user
+
+
+>> HUISWERK
+
+- Zorg dat je app op de juiste manier navigeert naar de UserEdit component
+	- Voeg de Edit en New routes toe op de User module
+	- Toon de Edit en New status op de juiste manier
+
+- Maak een UserService met CRUD functionaliteit op Users
+	- Met meer entiteiten/modules komen er ook meer services bij.
+	- Hoe kunnen we die services generiek maken?
+
+- Deploy je service op Heroku, en vul je URL in in het online document.
+
+- Bekijk de video 'YouTube - RxJs quick start with examples' - zie de link op Bb 
+  bij Client-side web frameworks > Onderwijsmateriaal > Reactive streams.
