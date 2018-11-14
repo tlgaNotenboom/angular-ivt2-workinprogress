@@ -10,4 +10,8 @@ export class UserService {
     allUsers(): User[] {
         return this.users;
     }
+
+    getUser(id: number): User {
+        return this.users[id];
+    }
 }

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class AdminGuard implements CanActivate {
 
-  private isAdmin: boolean = true;
+  private isAdmin: boolean = false;
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     // note the string interpolation!
