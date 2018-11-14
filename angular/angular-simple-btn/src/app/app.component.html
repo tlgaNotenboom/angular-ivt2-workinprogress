@@ -1,0 +1,36 @@
+<div class="jumbotron"><h1 class="display-4">Hello Heroes uit I2.2</h1></div>
+  
+<div class="container">
+  <div class="row">
+    <button 
+      class="btn" 
+      [ngClass]="{'btn-primary' : cnt !== 10, 'btn-danger': cnt === 10 }"
+      (click)="onKlikDan()">
+      Klik dan!
+    </button>
+  </div>
+  
+  <!-- <div class="row">
+      <p *ngIf="!msg">Je moet wel klikken!!</p>
+      <p *ngIf="msg">{{msg}}</p>
+  </div> -->
+
+  <ng-template #showMessage>
+    {{msg}}
+  </ng-template>
+
+  <ng-template [ngIf]="!msg" [ngIfElse]="showMessage">
+    <p *ngIf="!msg">Je moet wel klikken!!</p>
+  </ng-template>
+
+
+
+  <div class="row">
+    <div *ngIf="cnt === 10">
+      <p class="alert alert-primary" role="alert">
+        {{cnt}} keer geklikt
+      </p>
+    </div>
+  </div>
+
+</div>

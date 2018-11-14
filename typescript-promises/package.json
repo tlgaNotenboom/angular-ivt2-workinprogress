@@ -1,0 +1,15 @@
+{
+  "name": "typescript-promises",
+  "version": "1.0.0",
+  "description": "",
+  "main": "promise-ex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node promise-ex.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/es6-promise": "^3.3.0"
+  }
+}

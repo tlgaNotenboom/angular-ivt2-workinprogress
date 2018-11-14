@@ -45,3 +45,4 @@ Thumbs.db
 # Do not ignore the js-files in this folder
 !/javascript/**/*.js
 !/angular/angular-heroku/server.js
+angular/angular-simple-btn/.idea/

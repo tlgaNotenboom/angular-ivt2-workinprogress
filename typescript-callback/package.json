@@ -1,0 +1,14 @@
+{
+  "name": "typescript-callback",
+  "version": "1.0.0",
+  "description": "",
+  "main": "callback-ex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node callback-ex.js"
+  },
+  "author": "Diederich Kroeske",
+  "license": "ISC",
+  "dependencies": {
+  }
+}

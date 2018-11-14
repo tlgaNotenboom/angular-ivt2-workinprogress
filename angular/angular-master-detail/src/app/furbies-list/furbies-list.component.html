@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-4">
+    <h3>Select a Furby</h3>  
+    <ul class="list-group">
+      <li *ngFor="let furby of furbies"
+        class="list-group-item list-group-item-action" 
+        (click)="onSelectFurby(furby)"
+        [ngClass]="{'active': furby===selectedFurby}">
+        {{furby.name}}
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-8">
+    <app-furby-detail [furby]="selectedFurby"></app-furby-detail>
+  </div>
+</div>
