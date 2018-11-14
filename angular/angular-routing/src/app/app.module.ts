@@ -9,6 +9,8 @@ import { UsersComponent } from './components/users/users.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserItemComponent } from './components/users/user-list/user-item/user-item.component';
+import { UserNotfoundComponent } from './components/users/user-notfound/user-notfound.component';
+import { UsersRoutingModule } from './components/users/users-routing.module';
 
 @NgModule({
   declarations: [
@@ -18,10 +20,12 @@ import { UserItemComponent } from './components/users/user-list/user-item/user-i
     UsersComponent,
     UserListComponent,
     UserDetailsComponent,
-    UserItemComponent
+    UserItemComponent,
+    UserNotfoundComponent
   ],
   imports: [
     BrowserModule,
+    UsersRoutingModule,
     AppRoutingModule,
     NgbModule
   ],
