@@ -9,23 +9,24 @@ import { UsersComponent } from './components/users/users.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 import { UserDetailsComponent } from './components/users/user-details/user-details.component';
 import { UserItemComponent } from './components/users/user-list/user-item/user-item.component';
+import { UsersModule } from './users/users.module';
+import { UserService } from './components/users/userService';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeaderComponent,
-    UsersComponent,
-    UserListComponent,
-    UserDetailsComponent,
-    UserItemComponent
+    HeaderComponent  
   ],
   imports: [
     BrowserModule,
+    UsersModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
