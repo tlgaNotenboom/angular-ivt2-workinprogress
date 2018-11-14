@@ -12,10 +12,7 @@ Wat we vandaag doen:
 
 
 >> HUISWERK
-- Bedenk vragen die op het tentamen gesteld zouden kunnen worden!
-	Invullen via het online formulier.
-
-- implementeer de routing naar New User/Edit User
+- Implementeer de routing naar New User/Edit User
 	- Voeg een UserEdit component toe. Deze gebruik je voor zowel Edit als voor New!
 	- Zorg dat je app op de juiste manier navigeert naar de UserEdit component
 		- Onderscheid de status via data die je meegeeft aan de route. Dat kan met:
