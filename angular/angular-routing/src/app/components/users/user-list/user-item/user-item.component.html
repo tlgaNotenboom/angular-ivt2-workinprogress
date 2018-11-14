@@ -1,7 +1,7 @@
 <td>{{ index + 1 }}</td>
 <td>
-<!-- <a href="#"> -->
+  <a [routerLink]="[index]">
     {{selectedUser.name.title}} {{ selectedUser.name.first | titlecase }} {{selectedUser.name.last | titlecase}}
-  <!-- </a> -->
+  </a>
 </td>
 <td>{{ selectedUser.email }}</td>

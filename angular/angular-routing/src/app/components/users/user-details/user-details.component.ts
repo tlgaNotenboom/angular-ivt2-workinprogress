@@ -11,7 +11,12 @@ export class UserDetailsComponent implements OnInit {
   title = 'User Detail';
   id = -1;
 
+  constructor (private activedRoute: ActivatedRoute) {
+  }
+
   ngOnInit() {
+   // this.id = +this.activedRoute.snapshot.paramMap.get('id');
+    this.activedRoute.params.subscribe( (params) => this.id = params['id']);
   }
 
 }
