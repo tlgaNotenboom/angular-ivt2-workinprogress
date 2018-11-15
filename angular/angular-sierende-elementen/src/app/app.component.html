@@ -1,4 +1,7 @@
-<div *ngFor="let gp of geoPoints; let i = index">
-  <p>{{i}}:point({{gp.lng}},{{gp.lat}})</p>
-</div>
+<app-header [apptitle]='title'>
+  <div class="container main show-outlet">
+  </div>
+</app-header>
+<router-outlet></router-outlet>
+
 

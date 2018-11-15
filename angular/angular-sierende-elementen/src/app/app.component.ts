@@ -10,14 +10,14 @@ import { GeoPoint } from './models/geopoint';
 })
 export class AppComponent {
   title = 'angular-sierende-elementen';
-  geoPoints: GeoPoint[] = [];
+  //geoPoints: GeoPoint[] = [];
 
-  constructor(private ses : SierendeElementenService) {}
+  constructor(){} //private ses : SierendeElementenService) {}
 
   ngOnInit() {
-    this.ses.getSierendeElementen().subscribe( items => {
-      this.geoPoints = items
-    });
+    // this.ses.getSierendeElementen().subscribe( items => {
+    //   this.geoPoints = items
+    //});
     
   }
 }
