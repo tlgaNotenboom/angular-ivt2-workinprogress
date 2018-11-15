@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  {{title}}
+</mat-toolbar>
+
+<section>
+  <form class="example-form">
+    <mat-form-field>
+      <input 
+        matInput 
+        placeholder="Search term"
+        type="search"
+        name="searchTerm"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="newSearch(searchTerm)"
+        >
+    </mat-form-field> 
+  </form>
+  <div *ngFor="let result of results | async">   
+    {{ result }}
+  </div>
+</section>
