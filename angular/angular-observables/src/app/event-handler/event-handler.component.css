@@ -1,0 +1,16 @@
+.component {
+    display: grid;
+    background-color: lawngreen;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr;
+}
+
+.component > .coords {
+    text-align: center;
+}
+
+.component > .mousepad {
+    background-color: black;
+    text-align: center;
+    color: lightgrey;
+}
