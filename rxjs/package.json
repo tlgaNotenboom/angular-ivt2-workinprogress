@@ -1,0 +1,18 @@
+{
+	"name": "rxjs-examples",
+	"version": "1.0.0",
+	"license": "MIT",
+	"scripts": {
+		"start": "nodemon ./src/01_loop.js"
+	},
+	"engines": {
+		"node": "^8.12.0",
+		"npm": "^6.4.1"
+	},
+	"private": true,
+	"dependencies": {
+		"faker": "^4.1.0",
+		"nodemon": "^1.18.6",
+		"rxjs": "^6.3.3"
+	}
+}
