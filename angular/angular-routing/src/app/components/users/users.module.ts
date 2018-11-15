@@ -31,13 +31,3 @@ import { UserNotfoundComponent } from './user-notfound/user-notfound.component';
   ]
 })
 export class UsersModule { }
-
-// export class UsersModule {
-//   static forRoot(): ModuleWithProviders {
-//     return {
-//       ngModule: UsersModule,
-//       providers: [UsersService]
-//     };
-//   }
-// }
-

@@ -12,27 +12,30 @@ Wat we vandaag doen:
 
 
 >> HUISWERK
-- Bedenk vragen die op het tentamen gesteld zouden kunnen worden!
-	Invullen via het online formulier.
-
-- Routing naar New User/Edit existing user
+- Implementeer de routing naar New User/Edit User
 	- Voeg een UserEdit component toe. Deze gebruik je voor zowel Edit als voor New!
 	- Zorg dat je app op de juiste manier navigeert naar de UserEdit component
-		- Onderscheid de status via data die je meegeeft aan de route.
-
-		http://localhost:4200/users/0/edit én http://localhost:4200/users/list/3/edit
+		- Onderscheid de status via data die je meegeeft aan de route. Dat kan met:
+		  	{ path: 'hier/je/pad', component: UserEditComponent, data: { userAlreadyExists: true, title: 'Edit User' } }
+		Deze data kun je in de component lezen via 
+			this.jouwProperty = this.route.snapshot.data['userAlreadyExists'];
+		
+		Benodigde routes:
+		http://localhost:4200/users/0/edit en http://localhost:4200/users/list/3/edit
 		- Edit user 0. 'Save' slaat wijzigingen op (console.log dit); 'Cancel' niet. 
 
-		http://localhost:4200/users/new én http://localhost:4200/users/list/new
+		http://localhost:4200/users/new en http://localhost:4200/users/list/new
 		- Nieuwe user; ook met Save en Cancel buttons.
 
 		- Voeg de Edit en New routes toe op de User module
 
-- Maak een UserService en simuleer (via console.log) CRUD functionaliteit op Users
-	- Met meer entiteiten/modules komen er ook meer services bij.
-	  Hoe kunnen we die services generiek maken?
+- Maak een aanzet tot CRUD functionaliteit op Users. Maak daarvoor in de UserService de benodigde functies voor updaten, 
+	create en delete van een User en simuleer de aanroep van die functies vanuit de componets, via de service naar console.log.
+	Vraag: Met meer entiteiten/modules komen er ook meer services bij. Hoe kunnen we die services generiek maken?
 
-- Deploy je service op Heroku, en vul je URL in in het online document.
+- Deploy je service op Heroku. De handleiding hiervoor staat op GitHub. Lees de Readme! 
+	https://github.com/avansinformatica/angular-ivt2-examples/tree/master/angular/angular-heroku
 
 - Bekijk de video 'YouTube - RxJs quick start with examples' - zie de link op Bb 
-  bij Client-side web frameworks > Onderwijsmateriaal > Reactive streams.
+  bij 'Client-side web frameworks > Onderwijsmateriaal > Reactive streams', of via
+  https://www.youtube.com/watch?v=2LCo926NFLI&feature=youtu.be
