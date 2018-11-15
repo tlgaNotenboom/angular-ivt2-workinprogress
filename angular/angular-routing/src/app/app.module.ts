@@ -8,6 +8,7 @@ import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { HomeComponent } from './components/home/home.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { UsersModule } from './users/users.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UsersModule } from './users/users.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     UsersModule,
     NgbModule
   ],

@@ -9,7 +9,7 @@
     </thead>
     <tbody>
       <tr 
-        *ngFor="let user of users; let i = index" 
+        *ngFor="let user of users$ | async; let i = index" 
         app-user-item
         [selectedUser]="user" 
         [index]="i"
