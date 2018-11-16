@@ -57,11 +57,11 @@ export class MapComponent implements OnInit {
     this.ses.getSierendeElementen().subscribe( items => {
       items.forEach( gp => {
         var marker = new ol.Feature({
-          geometry: new ol.geom.Point([4.7683, 51.5719])
+          geometry: new ol.geom.Point([gp.lat, gp.lng])
         })
         this.markerSource.addFeature(marker)
       })
     });
   }
-  
+
 }

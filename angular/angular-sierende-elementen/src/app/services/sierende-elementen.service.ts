@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import {Observable, observable} from 'rxjs';
-import {map, catchError} from 'rxjs/operators';
+import { Observable, from, of} from 'rxjs';
+import { map, catchError} from 'rxjs/operators';
 import { GeoPoint } from '../models/geopoint';
 import { SierendElement } from '../models/sierendelement';
 
@@ -15,14 +15,18 @@ export class SierendeElementenService {
 
   constructor(private httpClient: HttpClient) { }
 
+  // getSE() : Observable<number[]> {
+  //   return of([10,11,12]);
+  // }
+
   getSierendeElementen(): Observable<GeoPoint[]>{
 
     let headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     let params = new HttpParams();
-    params.set('where', '1==1');
-    params.set('outFields', '*');
-    params.set('outSR', '4326');
-    params.set('f', 'json');
+    // params.set('where', '1==1');
+    // params.set('outFields', '*');
+    // params.set('outSR', '4326');
+    // params.set('f', 'json');
 
     return this.httpClient.get<any>(this.url, { headers: headers, params: params } )
       .pipe(
