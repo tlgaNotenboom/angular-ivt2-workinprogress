@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-8">
+    <h2>{{title}}</h2>
+    <p>Hier zou extra info kunnen staan.</p>
+  </div>
+  <div class="col">
+    <!-- <button type="button" class="btn btn-primary float-right" routerLink='new'>New User</button> -->
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-8 show-outlet">
+      <app-user-list></app-user-list>
+    </div>
+    <div class="col-4 show-outlet">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
