@@ -7,6 +7,7 @@ import { AdminGuard as UserIsAdmin } from '../../admin.guard';
 import { UserNotfoundComponent } from './user-notfound/user-notfound.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 
+// Step 02: Exlain the 'data' object in routes
 const routes: Routes = [
   { path: 'users/list', component: UserListComponent },
   { path: 'users/list/new', component: UserEditComponent, data: { 

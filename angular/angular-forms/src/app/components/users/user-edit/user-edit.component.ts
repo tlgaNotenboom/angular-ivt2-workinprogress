@@ -31,14 +31,14 @@ export class UserEditComponent implements OnInit {
     // this.id = +this.route.snapshot.paramMap.get('id');
 
     if(this.editMode){
+      
       // Subscribe to changes in route params. When the route changes we get updates on route params.
       this.route.params.subscribe((params) => {
         if (params['id']) {
           // Subscribe for available users. Once users are available we get our specific user.
           this.userService.usersAvailable.subscribe(userAvailable => {
             if (userAvailable) {
-              this.id = +params['id'];
-              this.user = this.userService.getUser(this.id);
+              // Step 03: Get the current user from the service
             }
           })
         }
@@ -55,16 +55,15 @@ export class UserEditComponent implements OnInit {
     console.log('onSubmit');
     // Save user via the service
     console.log(this.user);
-    console.log(this.id)
+    console.log(this.id);
 
     if(this.editMode) {
       this.userService.saveUser(this.id, this.user);
     } else {
       this.userService.saveNewUser(this.user);
     }
-    // Then navigate back to display view (= UserDetails).
-    // The display view must then show the new or edited user.
-    this.router.navigate(['..'], { relativeTo: this.route });
+    
+    // Part 17: navigate back to user-detail, displaying the correct user!
   }
 
 }

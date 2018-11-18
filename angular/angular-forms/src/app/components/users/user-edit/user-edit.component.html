@@ -13,130 +13,101 @@
 
       <!-- See https://angular.io/guide/forms-overview for documentation on forms -->
       <!-- See https://getbootstrap.com/docs/4.0/components/forms/#layout for info about Bootstrap form styling -->
+
+      <!-- Step 06: Explain novalidate -->
+      <!-- Step 07: Only allow submit when form is valid: look up ngForm and ngSubmit -->
       <form 
         *ngIf="user"
         #userEditForm="ngForm"
         name="form" 
-        (ngSubmit)="userEditForm.form.valid && onSubmit()"
+        (ngSubmit)="true && onSubmit()"
         novalidate
       >
-        <div class="form-row">
-          <div class="form-group col-lg-12">
-            <label for="firstName">Gender</label>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio1"
-                value="option1"
-              >
-              <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio2"
-                value="option2"
-              >
-              <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input
-                class="form-check-input"
-                type="radio"
-                name="inlineRadioOptions"
-                id="inlineRadio3"
-                value="option3"
-              >
-              <label class="form-check-label" for="inlineRadio3">Other</label>
-            </div>
+      <!-- Step 14: Look up radio input -->
+      <!-- Step 15: Link the label for the radio button -->
+      <!-- Step 16: Complete Radio input with other genders -->
+      <div class="form-row">
+        <!-- <div class="form-group col-lg-12">
+          <label>Gender</label>
+          <div class="form-check form-check-inline">
+            <input
+            class="form-check-input"
+            type="radio"
+            name="inlineRadioOptions"
+            id="inlineRadio1"
+            value="option1"
+            >
+            <label class="form-check-label" for="">Male</label>
           </div>
+            
+          </div> -->
         </div>
 
+        
         <div class="form-row">
           <div class="form-group col-sm-12 col-lg-6">
+            <!-- Step 04: Explain ngModel and #firstName -->
+            <!-- Step 05: Make the name required and at least three characters long -->
+            <!-- Step 08: Explain what happens with [ngClass] -->
             <label for="firstName">First Name</label>
             <input 
-              type="text"
-              class="form-control"
-              [(ngModel)]="user?.name.first"
-              name="firstName"
-              #firstName="ngModel"
-              [ngClass]="{ 
-                'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched)
-              }"
-              required
-              minlength="3"
+            type="text"
+            class="form-control"
+            [(ngModel)]="user?.name.first"
+            name="firstName"
+            #firstName="ngModel"
+            [ngClass]="{ 
+              'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched)
+            }"
             />
-            <div *ngIf="firstName.invalid && (firstName.touched)" class="invalid-feedback">
-              <div *ngIf="firstName.errors.required">First Name is required</div>
-              <div *ngIf="firstName.errors.minlength">First Name must be at least 3 characters long.</div>
-            </div>
+            <!-- Step 09: Display errors when the name is invalid: when the name is missing
+        and when it's shorter than three characters: look at debugging and think of ngIf -->
+            
+
             <!-- Debugging inputstatus -->
+            <!-- <p>{{firstName.value}}</p> -->
             <!-- <p>firstName.invalid = {{firstName.invalid}}</p> -->
             <!-- <p>firstName.touched = {{firstName.touched}}</p> -->
             <!-- <p>firstName.dirty = {{firstName.dirty}}</p> -->
             <!-- <p>firstName.pristine = {{firstName.pristine}}</p> -->
+            <!-- <pre>firstname.errors = {{firstName.errors | json}}</pre> -->
           </div>
       
-          <div class="form-group col-sm-12 col-lg-6">
-            <label for="lastName">Last Name</label>
-            <input
-              type="text"
-              class="form-control"
-              name="lastName"
-              [(ngModel)]="user?.name.last"
-              #lastName="ngModel"
-              [ngClass]="{ 
-                'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched)
-              }"
-              required
-              minlength="3"
-            />
-            <div *ngIf="lastName.invalid && (lastName.touched)" class="invalid-feedback">
-              <div *ngIf="lastName.errors.required">Lastname is required</div>
-              <div *ngIf="lastName.errors.minlength">Lastname must be at least 3 characters long.</div>
-            </div>
-          </div>
+          <!-- Step 11: Add last name -->
         </div>
       
         <div class="form-row">
           <div class="form-group col-lg-8">
-            <label for="inputEmail">Email</label>
+            <!-- Step 12: Complete email input: make form invalid if
+            email is invalid -->
+            <!-- <label for="">Email</label>
             <input
               type="email"
               class="form-control"
               name="inputEmail"
-              [(ngModel)]="user.email"
+              [(ngModel)]=""
               #inputEmail="ngModel"
               [ngClass]="{ 
-                'is-invalid': inputEmail.invalid && (inputEmail.dirty || inputEmail.touched)
+                'is-invalid': 
               }"
-              required
-              email
-            />
-            <div *ngIf="inputEmail.invalid" class="invalid-feedback">
-              <div *ngIf="inputEmail.errors.required">Email is required</div>
-              <div *ngIf="inputEmail.errors.email">Email must be a valid email address</div>
-            </div>
+            /> -->
+            <!-- Step 13: Show errors if email is invalid, but don't show errors when user did
+            not click in the email field yet! -->
           </div>
         </div>
 
+        <!-- Step 10: Make the cancel button go back and only show
+        the save button when the form is valid -->
         <div class="row">
           <div class="form-group">
             <button 
               type="button"
               class="btn btn-outline-warning float-right"
-              routerLink='..'
             >Cancel
             </button>
             <button 
               type="submit"
               class="btn btn-success float-right"
-              [disabled]="!userEditForm.valid"
             >Save
             </button>
           </div>
@@ -147,15 +118,4 @@
   <!-- </div>
 </div> -->
 
-  <p>Birthdate</p>
-  
-  <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-  
-  <hr />
-  
-  <pre>Month: {{ date.month }}.{{ date.year }}</pre>
-  <pre>Model: {{ model | json }}</pre>
-
-  <pre *ngIf="user">
-    <!-- {{ user | json }} -->
-  </pre>
+<!-- Step 18: ngb datepicker example -->

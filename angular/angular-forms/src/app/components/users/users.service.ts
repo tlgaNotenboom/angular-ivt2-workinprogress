@@ -12,6 +12,7 @@ export class UserService {
 
   users: User[]
 
+  // Step 01: Explain why we use a behavior subject
   usersAvailable = new BehaviorSubject<boolean>(false);
 
   constructor(
@@ -21,18 +22,6 @@ export class UserService {
   public getUsers(): Observable<User[]> {
     console.log('getUsers');
     return this.http.get(`${environment.apiUrl}/api/persons?offset=0&amount=8`).pipe(
-      //   convert incoming responsestring to json
-      // map(response => response.json()),
-      //   get only the results property
-      // map(response => response.results),
-      //   optionally log the results
-      // tap(console.log),
-      //   convert json array to User array
-      // map(users => users.map(data => new User(data))),
-      //   optionally log the results
-      // tap(console.log)
-
-      // all of the above can also be done in one operation:
       map(response => response.json().results.map(data => new User(data))),
       tap(users => {
         this.users = users;
