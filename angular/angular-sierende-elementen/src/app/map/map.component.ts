@@ -30,38 +30,44 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.map = new ol.Map({
       target: 'map',
-      // controls: ol.control.defaults({
-      //   attributionOptions: {
-      //     collapsible: false
-      //   }
-      // }).extend([mousePositionControl]),
       layers: [
         new ol.layer.Tile({
           source: new ol.source.OSM()
         }),
-        new ol.layer.Vector({
-          source: this.markerSource,
-          style: this.markerStyle,
-        }),
       ],
       view: new ol.View({
         center: ol.proj.fromLonLat([4.7683, 51.5719]),
-        zoom: 8
+        zoom: 12
       })
     });
+
+    this.showMarkers();
   }
 
   showMarkers() {
-    var layer = new ol.layer.Vector({source: this.markerSource})
-    this.map.addLayer(layer);
     this.ses.getSierendeElementen().subscribe( items => {
       items.forEach( gp => {
-        var marker = new ol.Feature({
-          geometry: new ol.geom.Point([gp.lat, gp.lng])
-        })
-        this.markerSource.addFeature(marker)
+        let vectorLayer = new ol.layer.Vector({
+          source: new ol.source.Vector({
+            features: [
+              new ol.Feature({
+                geometry: new ol.geom.Point(
+                  ol.proj.transform([gp.lng, gp.lat],'EPSG:4326', 'EPSG:3857'))
+              })
+            ]
+          }),
+          style: new ol.style.Style({
+            image: new ol.style.Icon({
+              anchor: [0.5, 0.5],
+              anchorXUnits: "fraction",
+              anchorYUnits: "fraction",
+              src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+            })
+          })
+        });  
+        this.map.addLayer(vectorLayer)
       })
     });
   }
-
 }
+

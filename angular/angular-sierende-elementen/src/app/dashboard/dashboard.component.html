@@ -6,9 +6,9 @@
         [ngClass]="{'active': i===selectedIndex}"
         class="list-group-item list-group-item-action">
           <h5><a href="#" [routerLink]="[i]">
-          {{i}} : coord({{gp.lng | number:'1.0-3' }},{{gp.lat | number }})</a>
-            </h5>
-        </li>
+            {{i}} : coord({{gp.lng | number:'1.0-3' }},{{gp.lat | number }})</a>
+          </h5>
+      </li>
     </ul>
   </div>
   <div class="col-md-6">
