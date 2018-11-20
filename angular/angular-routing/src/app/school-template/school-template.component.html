@@ -1,0 +1,30 @@
+<div>Create school Template style</div>
+
+<form (ngSubmit)="onSubmit()" #schoolForm="ngForm">
+  <div>
+    <label for="NameSchool">Name school</label>
+    <input type="text" name="NameSchool" [(ngModel)]="name" required/>
+  </div>
+  
+  <div>
+    <label for="AddressSchool">Address school</label>
+    <input type="text" name="AddressSchool" [(ngModel)]="address"/>
+  </div>
+  
+  <div>
+    <label for="MaxStudents">Max number of students</label>
+    <input name="MaxStudents" type="number" [(ngModel)]="maxNumberOfStudents" required #maxField="ngModel"/>
+  </div>
+
+  <div [hidden]="maxField.valid || maxField.pristine" class="alert alert-danger">
+      Value is required
+  </div>
+
+  <button type="button" (click)="schoolForm.reset()">Reset</button>
+
+  <button type="submit" [disabled]="!schoolForm.form.valid">Create New School</button>
+  
+  <div *ngIf="schoolForm.valid">I'm valid</div>
+
+
+</form>

@@ -9,15 +9,24 @@ import { DashboardModule } from './dashboard/dashboard.module';
 import { AdminModule } from './admin/admin.module';
 import { UserService } from './users/userservice';
 import { HttpClientModule } from '@angular/common/http';
+import { SchoolResponsiveComponent } from './school-responsive/school-responsive.component';
+import { SchoolTemplateComponent } from './school-template/school-template.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
 
-    HeaderComponent
+    HeaderComponent,
+
+    SchoolResponsiveComponent,
+
+    SchoolTemplateComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AdminModule,
     UsersModule,

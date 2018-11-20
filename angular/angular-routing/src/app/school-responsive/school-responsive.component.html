@@ -1,0 +1,27 @@
+<div>Create school Responsive style</div>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="schoolForm">
+    <div>
+      <label for="NameSchool">Name school</label>
+      <input type="text" name="NameSchool" formControlName="name"/>
+    </div>
+    
+    <div>
+      <label for="AddressSchool">Address school</label>
+      <input type="text" name="AddressSchool" formControlName="address"/>
+    </div>
+    
+    <div>
+      <label for="MaxStudents">Max number of students</label>
+      <input name="MaxStudents" type="number" formControlName="maxNumberOfStudents"/>
+      <span>{{schoolForm.get('maxNumberOfStudents').status}}</span>
+      <span *ngIf="MaxNumberOfStudents.errors.required">Number is required</span>
+      <span *ngIf="MaxNumberOfStudents.errors.max">Number is too large</span>
+    </div>
+   
+    <button type="submit" [disabled]="!schoolForm.valid">Create New School</button>
+
+    <div *ngIf="schoolForm.valid">I'm valid</div>
+
+    <div> {{ schoolForm.status }} </div>
+</form>
