@@ -19,26 +19,28 @@ export class UserService {
     console.log(`Connected to ${environment.apiUrl}`);
   }
 
-  public getUsers(): Observable<User[]> {
+  public getUsers() {
     console.log('getUsers');
-    return this.http.get<ApiResponse>(`${environment.apiUrl}/api/persons?offset=0&amount=8`).pipe(
-      //   convert incoming responsestring to json
-      // map(response => response.json()),
-      //   get only the results property
-      // map(response => response.results),
-      //   optionally log the results
-      // tap(console.log),
-      //   convert json array to User array
-      // map(users => users.map(data => new User(data))),
-      //   optionally log the results
-      // tap(console.log)
+    // return this.http.get(`${environment.apiUrl}/api/persons?offset=0&amount=8`).pipe(
+    //   //   convert incoming responsestring to json
+    //   map(response => response.json()),
+    //   //   get only the results property
+    //   map(response => response.results),
+    //   //   optionally log the results
+    //   tap(console.log),
+    //   //   convert json array to User array
+    //   map(users => users.map(data => new User(data))),
+    //   //   optionally log the results
+    //   tap(console.log)
 
-      map(response => response.results.map(data => new User(data))),
-      tap(users => {
-          this.users = users;
-        })
-        // error => console.log(error))
-    );
+    //   // map(response => response.results.map(data => new User(data))),
+    //   // tap(users => {
+    //   //     this.users = users;
+    //   //   })
+    //     // error => console.log(error))
+    // );
+
+    return new Observable<User[]>();
   }
 
   getUser(id: number): User {
