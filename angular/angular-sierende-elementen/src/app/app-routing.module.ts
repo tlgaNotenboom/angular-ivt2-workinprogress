@@ -8,14 +8,16 @@ import { LoginComponent } from './login/login.component';
 
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent, children: [
-    { path: '', component: DashboardDetailedComponent },
-    { path: ':id', component: DashboardDetailedComponent }
-  ] },
+  // { path: 'dashboard', component: DashboardComponent, children: [
+  //   { path: '', component: DashboardDetailedComponent },
+  //   { path: ':id', component: DashboardDetailedComponent }
+  // ] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [GuardService] },
+  { path: 'details/:id', component: DashboardDetailedComponent, canActivate: [GuardService] },
   { path: 'map', component: MapComponent, canActivate: [GuardService] },
   { path: 'login', component: LoginComponent },
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 

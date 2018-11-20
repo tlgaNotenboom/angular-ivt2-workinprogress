@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SierendeElementenService } from '../services/sierende-elementen.service';
 import { GeoPoint } from '../models/geopoint';
+import { SierendElement } from '../models/sierendelement';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,14 +10,14 @@ import { GeoPoint } from '../models/geopoint';
 })
 export class DashboardComponent implements OnInit {
 
-  geoPoints: GeoPoint[] = [];
+  sierendeElementen: SierendElement[] = [];
   selectedIndex: number;
 
   constructor(private ses : SierendeElementenService) { }
 
   ngOnInit() {
       this.ses.getSierendeElementen().subscribe( items => {
-      this.geoPoints = items
+      this.sierendeElementen = items
     });
   }
 

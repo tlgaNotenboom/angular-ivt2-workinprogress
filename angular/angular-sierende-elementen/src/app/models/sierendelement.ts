@@ -10,7 +10,7 @@ export class SierendElement {
         public kunstenaar: string,
         public materiaal: string,
         public omschrijving: string,
-        public plaatsingsdatum: number,
+        public plaatsingsdatum: Date,
         public url: string,
         public geometry: GeoPoint
     ){}

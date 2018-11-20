@@ -1,17 +1,25 @@
+<app-header [apptitle]='title'>
+  <div class="container main show-outlet">
+  </div>
+</app-header>
+
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-12">
+    <h1 *ngIf="!sierendeElementen">Loading ...</h1>
+
     <ul class="list-group">
-      <li *ngFor="let gp of geoPoints; let i = index"
-        (click)="onSelectGeoPoint(i)"
-        [ngClass]="{'active': i===selectedIndex}"
-        class="list-group-item list-group-item-action">
-          <h5><a href="#" [routerLink]="[i]">
-            {{i}} : coord({{gp.lng | number:'1.0-3' }},{{gp.lat | number }})</a>
-          </h5>
+      <li *ngFor="let se of sierendeElementen; let i = index">
+        <div class="card-container">
+          <a href="#" [routerLink]="['/details', i]" class="list-group-item list-group-item-action">
+            <div class="card text-white bg-dark mb-3">
+              <img class="card-img-top" src="{{se.url}}" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">{{se.omschrijving}}</p>
+              </div>
+            </div>
+          </a>          
+        </div>
       </li>
     </ul>
-  </div>
-  <div class="col-md-6">
-    <router-outlet></router-outlet>
   </div>
 </div>

@@ -22,14 +22,15 @@ export class LoginComponent implements OnInit {
     const username = this.loginForm.value['username'];
     const password = this.loginForm.value['password'];
     if ( this.authenticationService.login(username, password) ) {
-      this.router.navigate(['/map']);
+      this.router.navigate(['/dashboard']);
     }
     this.loginInvalid = true;
   }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      'username': new FormControl(null, [Validators.required, this.valideUsername.bind(this)]),
+      'username': new FormControl(null, 
+        [Validators.required, this.valideUsername.bind(this)]),
       'password': new FormControl(null, [Validators.required, this.validePassword.bind(this)]),
     });
     this.authenticationService.logout();

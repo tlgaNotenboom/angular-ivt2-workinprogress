@@ -19,24 +19,34 @@ export class SierendeElementenService {
   //   return of([10,11,12]);
   // }
 
-  getSierendeElementen(): Observable<GeoPoint[]>{
+  getSierendeElementen(): Observable<SierendElement[]>{
 
     let headers = new HttpHeaders({ 'Content-Type': 'text/plain' });
     let params = new HttpParams();
-    // params.set('where', '1==1');
-    // params.set('outFields', '*');
-    // params.set('outSR', '4326');
-    // params.set('f', 'json');
 
     return this.httpClient.get<any>(this.url, { headers: headers, params: params } )
       .pipe(
         map( result => {
-          let gps : GeoPoint[] = [];
-          result.features.forEach(element => {
+
+          let ses: SierendElement[] = [];
+          
+          result.features.forEach( element => {
             let gp = new GeoPoint(element.geometry.x, element.geometry.y)
-            gps.push(gp);
+            let se = new SierendElement(
+              element.attributes.OBJECTID,
+              element.attributes.IDENTIFICATIE,
+              element.attributes.AANDUIDINGOBJECT,
+              element.attributes.GEOGRAFISCHELIGGING,
+              element.attributes.KUNSTENAAR,
+              element.attributes.MATERIAAL,
+              element.attributes.OMSCHRIJVING,
+              new Date(element.attributes.PLAATSINGSDATUM),
+              element.attributes.URL,
+              gp
+            );
+            ses.push(se);
           });
-          return gps;
+          return ses;
         })
       )
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SierendeElementenService } from '../services/sierende-elementen.service';
 import { GeoPoint } from '../models/geopoint';
+import { SierendElement } from '../models/sierendelement';
 
 @Component({
   selector: 'app-dashboard-detailed',
@@ -10,23 +11,20 @@ import { GeoPoint } from '../models/geopoint';
 })
 export class DashboardDetailedComponent implements OnInit {
 
-  id = -1;
-  geoPoints : GeoPoint[] = [];
+  se : SierendElement;
 
   constructor(private route: ActivatedRoute,
     private ses : SierendeElementenService) { }
 
   ngOnInit() {
 
-    this.ses.getSierendeElementen().subscribe( items => {
-      this.geoPoints = items
-    });
-
     this.route.params.subscribe( (params) => {
-      this.id = +params['id'];
-      console.log(this.geoPoints[this.id]);
+      let id = +params['id'];
+      
+      this.ses.getSierendeElementen().subscribe( items => {
+        this.se = items.find( item => item.id === (id + 1) )
+      });
     })
-
   }
 
 }
