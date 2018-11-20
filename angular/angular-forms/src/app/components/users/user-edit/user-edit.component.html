@@ -8,3 +8,31 @@
   <!-- Debug: display editmode -->
   <!-- <p>Edit mode = {{ editMode | json }}</p> -->
 
+  <form 
+    *ngIf="user"
+    #userEditForm="ngForm"
+    name="form"
+    (ngSubmit)="userEditForm.form.valid && onSubmit()"
+    novalidate
+  >
+
+  <div class="form-group">
+    <label for="name">Firstname</label>
+    <input
+      type="text"
+      class="form-control"
+      #firstName="ngModel"
+      required
+      [(ngModel)]="user.name.first"
+      name="firstName"
+    >
+  </div>
+
+  <div class="form-group">
+    <label for="alterEgo">Alter Ego</label>
+    <input type="text" class="form-control" id="alterEgo">
+  </div>
+
+  <button type="submit" class="btn btn-success">Submit</button>
+
+</form>

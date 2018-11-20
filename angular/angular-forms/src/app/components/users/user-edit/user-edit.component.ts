@@ -46,9 +46,19 @@ export class UserEditComponent implements OnInit {
     } else {
       // Create a new empty user. The required properties are filled 
       // with empty values by the usermodel.
-      this.user = new User();
+      this.user = new User({
+        name: {
+          title: 'mr',
+          first: 'Robin',
+          last: 'Schellius'
+        },
+        email: 'rs@server.com'
+      });
     }
   }
 
+  onSubmit(){
+    console.log('Submitted');
+  }
 
 }
