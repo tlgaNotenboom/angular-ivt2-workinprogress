@@ -7,13 +7,13 @@ behavior, like storing a history.
 const {BehaviorSubject, ReplaySubject} = require('rxjs');
 
 // Behavior subject 
-let behavior$ = new BehaviorSubject('hello');
+// let behavior$ = new BehaviorSubject('hello');
 
-behavior$.subscribe(v => console.log('observer A: ' + v));
+// behavior$.subscribe(v => console.log('observer A: ' + v));
+// behavior$.subscribe(v => console.log('observer B: ' + v));
 
-behavior$.next('bye');
+// behavior$.next('bye');
 
-behavior$.subscribe(v => console.log('observer B: ' + v));
 
 
 // Replay subject buffers values for new subscribers, in

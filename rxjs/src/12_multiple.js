@@ -29,11 +29,11 @@ forkJoin(
 
 // combineLatest combines the latest values of multiple 
 // observables every time one emits a new value.
-let left$ = interval(500);
-let right$ = interval(1000);
+// let left$ = interval(500);
+// let right$ = interval(1000);
 
-combineLatest(
-    left$,
-    right$
-)
-.subscribe(console.log)
+// combineLatest(
+//     left$,
+//     right$
+// )
+// .subscribe(console.log)

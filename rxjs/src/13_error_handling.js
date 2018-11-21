@@ -50,7 +50,7 @@ Observable.create((observer) => {
     }
 })
 .pipe(
-    // retry(3),
+    retry(3),
     // catchError(err => {
     //     console.log('got error: ' + err);
     //     return of('error');

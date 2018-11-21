@@ -39,6 +39,8 @@ export class UserEditComponent implements OnInit {
           this.userService.usersAvailable.subscribe(userAvailable => {
             if (userAvailable) {
               // Step 03: Get the current user from the service
+              this.id = +params['id'];
+              this.user = this.userService.getUser(this.id);
             }
           })
         }
@@ -64,6 +66,7 @@ export class UserEditComponent implements OnInit {
     }
     
     // Part 17: navigate back to user-detail, displaying the correct user!
+    this.router.navigate(['..'], { relativeTo: this.route });
   }
 
 }

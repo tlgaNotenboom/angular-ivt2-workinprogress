@@ -39,10 +39,18 @@ let numbers$ = make_number_observable();
 // bufferTime stores values until time has passed, then
 // sends them on as array
 // this computes the sum of values every 2500ms
-// numbers$.pipe(
-//     // tap(x => console.log('new value: ' + x)),
-//     bufferTime(2500),
-//     // tap(x => console.log('after buffer: ' + x)),
-//     map(arr => arr.reduce((sum, elem) => sum + elem), 0)
-// )
-// .subscribe(console.log);
+numbers$.pipe(
+    // tap(x => console.log('new value: ' + x)),
+    bufferTime(2500),
+    // tap(x => console.log('after buffer: ' + x)),
+    map(arr => arr.reduce((sum, elem) => sum + elem), 0)
+)
+.subscribe(console.log);
+
+
+// arr.reduce((sum, elem) => sum + elem)
+
+// let sum = 0;
+// for(let elem of arr) {
+//     sum += elem;
+// }
