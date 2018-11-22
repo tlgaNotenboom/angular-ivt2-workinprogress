@@ -8,18 +8,18 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class SchoolResponsiveComponent implements OnInit {
 
+  submitted: boolean;
+
   // schoolForm = new FormGroup({
   //   name : new FormControl(''),
   //   address : new FormControl(''),
   //   maxNumberOfStudents : new FormControl('')
   // });
   schoolForm = this.formBuilder.group({
-    name: ['', Validators.required],
+    name: [''],
     address: [''],
-    maxNumberOfStudents: ['0', [Validators.required, Validators.max(100)]]
+    maxNumberOfStudents: ['0']
   });
-
-
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -28,6 +28,7 @@ export class SchoolResponsiveComponent implements OnInit {
 
   onSubmit() {
     console.log(`Submitted ${this.schoolForm.get('name').value }`);
+    this.submitted = true;
 
   }
 

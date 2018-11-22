@@ -22,7 +22,7 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Given a titel should show title on page', () => {
+  it('given a title should show title on page', () => {
     // Arrange
     const title = 'From unit test';
     component.title = title;

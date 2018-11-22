@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throwIfEmpty } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,6 +13,10 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  }
+
+  reverse() {
+    this.title = this.title.split('').reverse().join('');
   }
 
 }
