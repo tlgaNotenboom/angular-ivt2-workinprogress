@@ -1,0 +1,35 @@
+<h1>{{title}}</h1>
+
+<div *ngIf="user">
+	<table class="table table-borderless table-sm">
+		<tbody>
+			<tr>
+				<td style="width: 25%">Naam</td>
+				<td>{{user.data.firstname}} {{user.data.lastname}}</td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td>{{user.data.email}}</td>
+			</tr>
+			<tr>
+				<td>Roles</td>
+				<td>
+					<span *ngFor="let role of user?.roles">
+						{{ role | asRole }}
+					</span>
+				</td>
+			</tr>
+			<tr>
+				<td>Loggedin</td>
+				<!-- <td>{{user?.meta?.updatedAt | date :'fullDate'}}</td> -->
+				<td>{{user?.meta?.updatedAt | date:"dd-MM-yyyy hh:mmu"}}</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+</div>
+<div *ngIf="!user">
+	<p>Your user information was not found.</p>
+	<p>Connect your component to the UserService and get your profile data from the server!.</p>
+</div>

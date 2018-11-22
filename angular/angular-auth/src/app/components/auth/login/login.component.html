@@ -1,0 +1,40 @@
+<form class="form-signin" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="text-center mb-4">
+    <img class="mb-4" src="assets/images/logo-design-fine-son.jpg" width="60%">
+  </div>  
+
+  <div class="form-label-group">
+    <input 
+      type="text" 
+      id="email"
+      placeholder="Email address" 
+      formControlName="email" 
+      class="form-control">
+    <span 
+      *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" 
+      class="help-block">
+      <p>Please enter a valid email address</p>
+    </span>      
+  </div>
+
+  <div class="form-label-group">
+    <input 
+      type="password" 
+      id="password" 
+      placeholder="Password" 
+      formControlName="password" 
+      class="form-control">
+    <span 
+      *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" 
+      class="help-block">
+      <p>Please enter a valid password</p>
+    </span>
+  </div>
+
+  <button
+    class="btn btn-lg btn-primary btn-block" 
+    type="submit" [disabled]="!loginForm.valid">
+    Sign in
+  </button>
+  <p class="mt-5 mb-3 text-muted text-center">&copy; Avans Informatica Breda 2018-2019</p>
+</form>

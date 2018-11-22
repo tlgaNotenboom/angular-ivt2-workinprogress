@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+main {
+	margin-top: 80px;
+}
+
+.show-outlet {
+	/* border: 2px solid red; */
+	/* padding: 5px; */
+}
+
+.btn-spacing {
+	margin-left: 10px;
+}
+
+.sticky-component {
+	/* position: fixed; */
+	/* width: auto; */
+}

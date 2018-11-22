@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">{{ apptitle }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07" aria-controls="navbarsExample07"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07">
+      <ul class="navbar-nav mr-auto">
+
+        <!-- Dashboard - always accessible to all users -->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="'/dashboard'" [routerLinkActive]="['active']" href="#">Dashboard</a>
+        </li>
+
+        <!-- Users - visible if user is loggedin -->
+        <li *ngIf="isLoggedIn$ | async" ngbDropdown class="nav-item dropdown">
+          <a class="nav-link" id="dropdownBasic1" ngbDropdownToggle>Users</a>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" routerLink="/users" href="#">Show UsersComponent</a>
+            <a class="dropdown-item" routerLink="/users/list" href="#">Show UsersList</a>
+            <a class="dropdown-item">Another Action</a>
+            <a class="dropdown-item">Something else is here</a>
+          </div>
+        </li>
+
+        <!-- Admin page - visible if user has Admin role (and is loggedin) -->
+        <li class="nav-item" *ngIf="isAdmin$ | async as isAdmin">
+          <a class="nav-link" routerLink="/admin" [routerLinkActive]="['active']" href="#">AdminPanel</a>
+        </li>
+      </ul>
+
+      <!-- Authentication/user profile menu -->
+      <ul  class="navbar-nav">
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item">
+          <a class="nav-link" routerLink="/login" href="#">Sign in</a>
+        </li>
+        <li *ngIf="!(isLoggedIn$ | async)" class="nav-item">
+          <a class="nav-link" routerLink="/register" href="#">Sign up</a>
+        </li>
+
+        <li *ngIf="isLoggedIn$ | async as isLoggedIn" ngbDropdown class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link" id="profile">{{fullName}}</a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="profile">
+            <a class="dropdown-item" routerLink="/users/me" [routerLinkActive]="['active']">My Profile</a>
+            <a class="dropdown-item" routerLink="/todo" [routerLinkActive]="['active']">My Progress</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="" (click)="onLogout()">Logout</a>
+          </div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,17 @@
+﻿
+<!-- <ngb-alert *ngIf="message && !staticAlertClosed" (close)="staticAlertClosed = true" [ngClass]="{ 'success': type === 'success', 'danger': type === 'error' }">
+  <strong *ngIf="type === 'error'">Error!</strong>
+  {{message.text}}
+</ngb-alert> -->
+
+<ngb-alert 
+  *ngIf="message && !staticAlertClosed" 
+  (close)="staticAlertClosed = true"
+  [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }"
+>
+  <!-- type="custom"> -->
+  <strong>Whoa!</strong> 
+  {{message?.text}}
+</ngb-alert>
+
+  <div *ngIf="message" [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 'alert-danger': message.type === 'error' }">{{message.text}}</div>
