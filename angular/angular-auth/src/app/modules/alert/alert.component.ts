@@ -1,34 +1,34 @@
 ﻿import { Component, OnInit, Input } from '@angular/core';
-import { AlertService } from './alert.service';
+import { AlertService, Alert } from './alert.service';
 import { NgbAlertConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-    // moduleId: module.id,
     selector: 'app-alert',
     providers: [NgbAlertConfig],
     templateUrl: 'alert.component.html',
     styleUrls: ['alert.component.css']
 })
 export class AlertComponent implements OnInit {
-    @Input() public alerts: Array<string> = [];
-    message: any;
+    alert: Alert;
     staticAlertClosed = false;
 
     constructor(
-        private alertService: AlertService,
-        private alertConfig: NgbAlertConfig
+        private alertConfig: NgbAlertConfig,
+        private alertService: AlertService
     ) {
-        // Globally customize default values of alerts used by this component tree
-        this.alertConfig.dismissible = true;
-
-        setTimeout(() => this.staticAlertClosed = true, 4000);
-
+        // customize default values of alerts used by this component tree
+        alertConfig.type = 'success';
+        alertConfig.dismissible = true;
     }
 
     ngOnInit() {
-        this.alertService.getMessage().subscribe(message => {
-            console.dir(message);
-            this.message = message;
-        });
+        this.alertService
+            .getMessage()
+            .subscribe(alert => {
+                this.alert = alert;
+                this.staticAlertClosed = false;
+                // auto close alertbox after some time
+                setTimeout(() => this.staticAlertClosed = true, 4000);
+            });
     }
 }

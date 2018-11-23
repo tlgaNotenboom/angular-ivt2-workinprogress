@@ -3,9 +3,14 @@ import { Router, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs';
 
+export interface Alert {
+    type: string;
+    message: string;
+}
+
 @Injectable()
 export class AlertService {
-    private subject = new Subject<any>();
+    private subject = new Subject<Alert>();
     private keepAfterNavigationChange = false;
 
     constructor(private router: Router) {
@@ -24,18 +29,18 @@ export class AlertService {
         });
     }
 
-    success(message: string, keepAfterNavigationChange = false) {
+    success(msg: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'success', text: message });
+        this.subject.next({ type: 'success', message: msg });
     }
 
-    error(message: string, keepAfterNavigationChange = false) {
+    error(msg: string, keepAfterNavigationChange = false) {
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
+        this.subject.next({ type: 'error', message: msg });
     }
 
-    getMessage(): Observable<any> {
-        console.log('getMessage');
+    getMessage(): Observable<Alert> {
+        // console.log('getMessage');
         return this.subject.asObservable();
     }
 }

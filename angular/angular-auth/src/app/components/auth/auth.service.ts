@@ -88,7 +88,8 @@ export class AuthService {
           // return true;
         },
         error: err => {
-          console.error('Error logging in: ' + err);
+          // console.error('Error logging in: ' + err);
+          this.alertService.error('Invalid credentials')
         }
       });
   }
