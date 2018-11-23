@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../user.model';
 import { UserService } from '../users.service';
+import { AlertService } from 'src/app/modules/alert/alert.service';
 
 @Component({
   selector: 'app-user-list',
@@ -14,6 +15,7 @@ export class UserListComponent implements OnInit {
   users: User[];
 
   constructor(
+    private alertService: AlertService,
     private router: Router,
     private userService: UserService
   ) { }
@@ -21,7 +23,10 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
     this.userService.getUsers().subscribe(
       users => this.users = users,
-      error => console.log('Doe iets met deze error : ' + error)
+      error => {
+        console.log(error)
+        this.alertService.error('<strong>Connection error:</strong> ' + error + '<br/>(Is de server bereikbaar?)')
+      }
     );
   }
 

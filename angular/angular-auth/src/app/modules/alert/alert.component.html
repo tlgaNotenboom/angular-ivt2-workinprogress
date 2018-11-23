@@ -7,8 +7,9 @@
     'alert-danger': alert.type === 'error',
     'alert-success': alert.type === 'success'
   }"
+  [innerHTML]="alert.message"
 >
   <!-- <strong>Whoa!</strong>  -->
-  {{ alert.message }}
+  <!-- {{ alert.message }} -->
   <!-- {{ alert | json}} -->
 </ngb-alert>
