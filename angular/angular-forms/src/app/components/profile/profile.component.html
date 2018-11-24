@@ -1,0 +1,159 @@
+<div class="container">
+  <h1>Profile Settings</h1>
+
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col">
+        <h4>Personal information</h4>
+      </div>
+    </div>
+
+    <div class="row form-group" formGroupName="name">
+      <div class="col">
+        <mat-form-field>
+          <input 
+            matInput 
+            placeholder="First Name" 
+            type="text"
+            formControlName="first">
+          <mat-error *ngIf="profileForm.get('name').get('first').hasError('required')">
+            First name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field>
+          <input 
+            matInput 
+            placeholder="Last Name" 
+            type="text" 
+            formControlName="last">
+            <mat-error *ngIf="profileForm.get('name').get('last').hasError('required')">
+                Last name is required
+            </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+          <input 
+            matInput
+            placeholder="Email"
+            type="email"
+            formControlName="email">
+          <mat-error *ngIf="!profileForm.get('email').hasError('required') && profileForm.get('email').hasError('email')">
+              Should be an email address
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('email').hasError('required')">
+              Email is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field>
+            <input 
+              matInput 
+              [matDatepicker]="picker" 
+              placeholder="Choose a date"
+              formControlName="birthDate"
+              >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field>
+            <mat-select placeholder="Preferred role" formControlName="role">
+              <mat-option *ngFor="let role of roles" [value]="role">
+                {{role}}
+              </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+          <h4>How much do you like webdev?</h4>
+            <mat-slider
+              style="width: 500px"
+              id="webdev"
+              thumbLabel
+              min="0"
+              max="100"
+              formControlName="likesWebdev"
+            ></mat-slider>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <button class="btn btn-warning" (click)="addHobby()">
+          Add hobby
+        </button>
+      </div>
+      <div class="col-10">
+        <h4>Your hobbies</h4>
+        <div formArrayName="hobbies"
+          *ngFor="let hobby of profileForm.get('hobbies').controls; let i = index;"
+          >
+          <mat-form-field>
+              <input 
+                matInput
+                placeholder="Hobby {{i+1}}"
+                type="text"
+                [formControlName]="i">
+          </mat-form-field>
+          <button class="btn btn-danger" (click)="removeHobby(i)">x</button>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <div class="col">
+        <h4>Terms and Contact</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+          <mat-checkbox
+            formControlName="termsAgreed">
+            Agree with terms
+          </mat-checkbox>
+          <mat-error *ngIf="profileForm.get('termsAgreed').invalid">
+            You need to agree with the terms
+          </mat-error>
+      </div>
+
+      <div class="col-6">
+          <mat-slide-toggle
+            formControlName="announcements">
+            Get email announcements
+          </mat-slide-toggle>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <button class="btn btn-primary" type="submit" [disabled]="profileForm.invalid">
+        Save
+      </button>
+      <button class="btn btn-danger" routerLink="/">
+        Cancel
+      </button>
+    </div>
+  </form>
+</div>
