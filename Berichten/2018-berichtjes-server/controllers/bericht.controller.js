@@ -48,6 +48,7 @@ module.exports = {
     createBericht( req, res, next ) { 
         //
         let bericht = new BerichtSchema(req.body);
+        console.log('*' + JSON.stringify(bericht))
         bericht.save()
             .then( user => res.status(200).json(user).end() )
             .catch( error => new ApiError(error.toString(), 500));

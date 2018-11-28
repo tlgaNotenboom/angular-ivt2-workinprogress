@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let bericht of berichten | async">
+    <a (click)="onBericht(bericht)">[{{bericht.owner}}] : {{bericht.content}}</a>
+  </li>
+</ul>
+<br >
+<app-bericht-detail [bericht]="gekozenBericht" ></app-bericht-detail>
