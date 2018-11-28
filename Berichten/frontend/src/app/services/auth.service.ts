@@ -10,7 +10,6 @@ import { User } from '../model/user.model';
 export class AuthService {
 
     readonly url = 'http://localhost:1234/api/login';
-    //private _user: User = null;
 
     constructor(private httpClient: HttpClient) { }
 

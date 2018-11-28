@@ -1,1 +1,4 @@
-<router-outlet></router-outlet>
+<button routerLink="/bericht-post">Post een bericht</button>
+<div [@routerTransition]="getState(o)">
+<router-outlet #o="outlet"></router-outlet>
+</div>

@@ -8,7 +8,9 @@ import { PostBerichtComponent } from "./post-bericht/post-bericht.component";
 
 const routes: Routes = [
     { path: 'login', component: LoginComponent },
-    { path: 'berichten', component: BerichtenComponent, canActivate: [GuardService] },
+    { path: 'berichten', component: BerichtenComponent, 
+      canActivate: [GuardService], 
+      data: { state: 'berichten'} },
     { path: 'bericht-detail', component: BerichtDetailComponent, canActivate: [GuardService] },
     { path: 'bericht-post', component: PostBerichtComponent, canActivate: [GuardService] },
     { path: '', redirectTo: '/login', pathMatch: 'full' },

@@ -42,9 +42,7 @@ export class BerichtService {
 
   post(bericht: string) : Observable<any>{
 
-    //let token = this.authService.user.token || '';
-    let token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1NDQxOTMyNjYsImlhdCI6MTU0MzMyOTI2Niwic3ViIjp7ImVtYWlsIjoiZGtyb2Vza2VAZ21haWwuY29tIiwiaWQiOiJka3JvZXNrZSJ9fQ.kqfppqudxboHGsKIQ-lO1e5X39uoFxMirSQk3VS7cuc'
-    console.log('token: ' + token)
+    let token = this.authService.user.token || '';
 
     let headers = new HttpHeaders({ 
       'Content-Type': 'application/json',
@@ -52,7 +50,7 @@ export class BerichtService {
     });
     let params = new HttpParams();
 
-    let owner = 'Diederich';
+    let owner = this.authService.user.email || '';
     let body = { 'owner': owner, 'content': bericht}
 
     return this.httpClient.post<any>
