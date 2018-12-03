@@ -14,3 +14,12 @@ input.ng-valid.ng-touched {
   border-left: 5px solid #00ACEB;
 }
   
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

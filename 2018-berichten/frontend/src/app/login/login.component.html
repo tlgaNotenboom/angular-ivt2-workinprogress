@@ -1,30 +1,30 @@
-<div class="container">
-  <div class="col-md-6 col-md-offset-3">
 
-    <h2>Login</h2>
-
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-
-      <input
-        type="text"
-        id="email"
-        placeholder="email"
-        formControlName="email"
-        class="form-control">
-      <span
+      <mat-form-field class="example-full-width">
+          <input type="text" id="email" matInput placeholder="Enter your email" formControlName="email" required>
+      </mat-form-field>
+      <mat-error
         *ngIf="!loginForm.get('email').valid && loginForm.get('email').touched" class="help-block">
-      <p>Please enter a valid email</p></span>
+        {{getEmailErrorMessage()}}</mat-error>
 
-     <input
-        type="text"
-        id="password"
-        placeholder="Password"
-        formControlName="password"
-        class="form-control">
-      <span
+      <mat-form-field class="example-full-width">
+        <!-- <input
+          matInput
+          type="text"
+          id="password"
+          placeholder="Password"
+          formControlName="password"
+          class="form-control"> -->
+          <input type="password" id="password" matInput placeholder="Enter your password" formControlName="password" required>
+      </mat-form-field> 
+      <mat-error
+      *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="help-block">
+      {{getPasswordErrorMessage()}}</mat-error>     
+      <!-- <span
         *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched" class="help-block">
-        <p>Please enter a valid password</p></span>
+        <p>Please enter a valid password</p></span> -->
+
 
     </div>
     <button
@@ -36,6 +36,5 @@
         <p>Invalid login</p>
       </span>
     </form>
-</div>
-</div>
+
 

@@ -42,6 +42,18 @@ export class LoginComponent implements OnInit {
     this.authService.logout();
   }
 
+  getEmailErrorMessage() {
+    this.loginForm.get('email').hasError('required') ? 'You must enter a value' :
+        this.loginForm.get('email').hasError('email') ? 'Not a valid email' :
+            '';
+  }
+
+  getPasswordErrorMessage() {
+    this.loginForm.get('password').hasError('required') ? 'You must enter a value' :
+        this.loginForm.get('password').hasError('password') ? 'Not a valid password' :
+            '';
+  }
+
   validateEmail(control: FormControl): {[s: string]: boolean} {
     const email = control.value;
     const regexp = new RegExp('^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$');

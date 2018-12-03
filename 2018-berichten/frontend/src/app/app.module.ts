@@ -12,6 +12,7 @@ import { BerichtenComponent } from './berichten/berichten.component';
 import { AuthService } from './services/auth.service';
 import { BerichtDetailComponent } from './bericht-detail/bericht-detail.component';
 import { PostBerichtComponent } from './post-bericht/post-bericht.component';
+import { MaterialModule } from './material.module';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { PostBerichtComponent } from './post-bericht/post-bericht.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
